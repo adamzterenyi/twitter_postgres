@@ -99,7 +99,7 @@ def insert_tweet(connection,tweet):
         FROM tweets
         WHERE id_tweets = :id_tweets
         ''')
-        res = connection.execute(sql,{'id_tweets':tweet['id']})  
+        res = connection.execute(sql,{'id_tweets':tweet['id'],})  
     
         if res.first() is not None:
             return
@@ -152,19 +152,19 @@ def insert_tweet(connection,tweet):
             'id_users': tweet['user']['id'],
             'created_at': tweet['user']['created_at'],
             'updated_at': tweet['created_at'],
-            'screen_name': remove_nulls(tweet['user']['screen_name']),
-            'name': remove_nulls(tweet['user']['name']),
-            'location': remove_nulls(tweet['user']['location']),
-            'id_urls': user_id_urls,
-            'description': remove_nulls(tweet['user']['description']),
-            'protected': tweet['user']['protected'],
-            'verified': tweet['user']['verified'],
-            'friends_count': tweet['user']['friends_count'],
-            'listed_count': tweet['user']['listed_count'],
-            'favourites_count': tweet['user']['favourites_count'],
-            'statuses_count': tweet['user']['statuses_count'],
-            'withheld_in_countries': tweet['user'].get('withheld_in_countries', None)
-            })
+            'screen_name':remove_nulls(tweet['user']['screen_name']),
+            'name':remove_nulls(tweet['user']['name']),
+            'location':remove_nulls(tweet['user']['location']),
+            'id_urls':user_id_urls,
+            'description':remove_nulls(tweet['user']['description']),
+            'protected':tweet['user']['protected'],
+            'verified':tweet['user']['verified'],
+            'friends_count':tweet['user']['friends_count'],
+            'listed_count':tweet['user']['listed_count'],
+            'favourites_count':tweet['user']['favourites_count'],
+            'statuses_count':tweet['user']['statuses_count'],
+            'withheld_in_countries':tweet['user'].get('withheld_in_countries', None),
+        }) 
 
         ########################################
         # insert into the tweets table
@@ -361,7 +361,7 @@ def insert_tweet(connection,tweet):
                 VALUES (:id_tweets, :tag) ON CONFLICT DO NOTHING
                 ''')
 
-        res = connection.execute(sql, {'id_tweets': tweet['id'], 'tag': remove_nulls(tag)})
+            res = connection.execute(sql, {'id_tweets': tweet['id'], 'tag': remove_nulls(tag)})
 
         ########################################
         # insert into the tweet_media table
