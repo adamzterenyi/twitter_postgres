@@ -125,11 +125,11 @@ def insert_tweet(connection,tweet):
                 statuses_count,
                 protected,
                 verified,
-                screen_names,
+                screen_name,
                 name,
                 location,
                 description,
-                withheld_in_countries )
+                withheld_in_countries)
             VALUES (
                 :id_users,
                 :created_at,
@@ -145,7 +145,7 @@ def insert_tweet(connection,tweet):
                 :name,
                 :location,
                 :description,
-                :withheld_in_countries ) ON CONFLICT DO NOTHING;
+                :withheld_in_countries) ON CONFLICT DO NOTHING;
             ''')
 
         connection.execute(sql, {
