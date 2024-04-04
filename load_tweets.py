@@ -117,7 +117,7 @@ def insert_tweet(connection,tweet):
             INSERT INTO users (
                 id_users,
                 created_at,
-                update_at,
+                updated_at,
                 id_urls,
                 friends_count,
                 listed_count,
