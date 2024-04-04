@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=pass
       - PGUSER=postgres
     ports:
-      - 1362:5432
+      - 1363:5432
 
   pg_normalized:
     build: services/pg_normalized
